@@ -1,4 +1,4 @@
-import Calculator from "./Project.jsx";
+import Calculator from "./project.jsx";
 import './App.css';
 
 function App() {
