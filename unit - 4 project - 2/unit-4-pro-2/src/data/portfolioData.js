@@ -19,55 +19,13 @@ export const personalInfo = {
   phone: "+91 98765 43210"
 };
 
-export const stats = [
-  { label: "Current CGPA", value: "8.6", suffix: "/ 10", desc: "Top tier academic record" },
-  { label: "Year & Degree", value: "2nd", suffix: "Year B.E.", desc: "Computer Science & Eng." },
-  { label: "Practical Projects", value: "10+", suffix: "Built", desc: "Live web apps & tools" },
-  { label: "Availability", value: "Immediate", suffix: "Intern", desc: "Remote or Chennai onsite" }
-];
-
-export const skillsData = {
-  programming: [
-    { name: "Java", level: 85, icon: "☕", note: "OOP, Core Java & DSA" },
-    { name: "Python", level: 80, icon: "🐍", note: "Scripting, Logic & AI tools" },
-    { name: "JavaScript (ES6+)", level: 85, icon: "⚡", note: "DOM, Async & Modern syntax" },
-    { name: "OOP Principles", level: 88, icon: "🧱", note: "Encapsulation, Inheritance & Design" },
-    { name: "Data Structures & Algorithms", level: 78, icon: "🌲", note: "Arrays, Trees, Graphs, Sorting" },
-    { name: "Problem Solving", level: 85, icon: "🧩", note: "Algorithmic thinking & Optimization" }
-  ],
-  webDevelopment: [
-    { name: "HTML5", level: 95, icon: "🌐", note: "Semantic layout, accessibility, SEO" },
-    { name: "CSS3", level: 90, icon: "🎨", note: "Flexbox, Grid, Animations, Variables" },
-    { name: "JavaScript", level: 85, icon: "💻", note: "Interactive web logic & event flow" },
-    { name: "React.js", level: 82, icon: "⚛️", note: "Hooks, Context, State & Modular UI" },
-    { name: "Responsive Web Design", level: 92, icon: "📱", note: "Mobile-first & multi-device UX" },
-    { name: "REST API Basics", level: 80, icon: "🔌", note: "Fetch, Axios, JSON & CRUD endpoints" }
-  ],
-  database: [
-    { name: "SQL", level: 82, icon: "🗄️", note: "Queries, joins, grouping & indexing" },
-    { name: "MySQL", level: 80, icon: "🐬", note: "Relational schema & transaction logic" },
-    { name: "DBMS", level: 84, icon: "📊", note: "Database normalization & ACID concepts" }
-  ],
-  tools: [
-    { name: "Git", level: 85, icon: "🌿", note: "Branching, commits, rebasing & PRs" },
-    { name: "GitHub", level: 88, icon: "🐙", note: "Repos, workflows, collaboration" },
-    { name: "VS Code", level: 90, icon: "🛠️", note: "Extensions, debugging & workflow" },
-    { name: "MS Office", level: 88, icon: "📄", note: "Documentation, slides & spreadsheets" }
-  ],
-  currentlyLearning: [
-    { name: "Advanced React", icon: "🚀", desc: "Custom hooks, performance profiling, compound components" },
-    { name: "Full-Stack Development", icon: "🔄", desc: "End-to-end client, server & API architectures" },
-    { name: "Backend Development", icon: "⚙️", desc: "Node.js, Express, FastAPI server design" },
-    { name: "AI/ML Integration", icon: "🤖", desc: "Integrating intelligent models into web interfaces" },
-    { name: "Cloud Deployment", icon: "☁️", desc: "Containerization, Vercel, Docker & CI/CD" }
-  ]
-};
-
-export const featuredProjects = [
+export const allProjects = [
   {
     id: "studyflow",
     title: "StudyFlow — Student Study Diary & Tracker",
-    badge: "Unit 5 • Project 2 (Live Deployed)",
+    unit: "unit-5",
+    badge: "Unit 5 • Project 2",
+    badgeType: "live",
     subtitle: "Complete academic productivity suite with Pomodoro timer, diary logs, and matrix calendar.",
     description:
       "A feature-rich academic dashboard built with React and Context API. Empowers students to manage deadlines, log daily study diaries, run focused Pomodoro cycles, track weekly horizons, and manage tasks across Kanban and Matrix views.",
@@ -95,7 +53,9 @@ export const featuredProjects = [
   {
     id: "edugrade",
     title: "EduGrade — Student Report Card & SGPA Portal",
-    badge: "Unit 5 • Project 1 (Live Deployed)",
+    unit: "unit-5",
+    badge: "Unit 5 • Project 1",
+    badgeType: "live",
     subtitle: "Interactive academic evaluation portal with SGPA calculations and printable grade sheets.",
     description:
       "A comprehensive student performance management portal. Features dynamic SGPA and CGPA computation, subject-wise grade distributions, instant search & filter across cohorts, and printable official student report cards.",
@@ -122,7 +82,9 @@ export const featuredProjects = [
   {
     id: "verification-portal",
     title: "Secure User Verification & KYC Portal",
-    badge: "Unit 4 • Project 1 (Live Deployed)",
+    unit: "unit-4",
+    badge: "Unit 4 • Project 1",
+    badgeType: "live",
     subtitle: "Dynamic multi-field registration form with algorithmic regex checks and cascading selectors.",
     description:
       "A production-grade user onboarding and document verification interface. Validates government identity formats (Aadhaar, PAN), verifies phone and email syntaxes, provides cascading state/city selectors, and supports live avatar photo uploads.",
@@ -148,7 +110,9 @@ export const featuredProjects = [
   {
     id: "sih-26188",
     title: "AI-Based Fake Identity & Document Screening System",
-    badge: "Smart India Hackathon 2026 • PS 26188",
+    unit: "hackathon",
+    badge: "SIH 2026 • Problem Statement 26188",
+    badgeType: "flagship",
     subtitle: "AI-powered forensic document tampering and biometric verification platform.",
     description:
       "A document verification and identity screening system designed to detect potentially fraudulent identity documents. Engineered to detect forgeries, automate OCR data extraction, analyze tamper risk scores, and perform face biometric comparison.",
@@ -175,160 +139,135 @@ export const featuredProjects = [
     github: "https://github.com/nishanthms760/sih-26188-document-screening",
     featured: true,
     accentColor: "#a855f7"
-  }
-];
-
-export const miniProjects = [
+  },
   {
     id: "attendance-tracker",
     title: "Student Attendance & Status Tracker",
-    category: "Unit 3 • Project 2",
-    icon: "📊",
-    description: "Interactive student attendance management system tracking real-time Present/Absent states with cohort filtering and one-click status toggles.",
-    tech: ["React.js", "State Toggles", "Filtering", "Modular CSS"],
+    unit: "unit-3",
+    badge: "Unit 3 • Project 2",
+    badgeType: "live",
+    subtitle: "Interactive attendance management system tracking real-time student statuses.",
+    description:
+      "A React student attendance tracker providing real-time tracking of Present and Absent students with cohort-wide filtering and one-click attendance status toggles.",
+    technologies: ["React.js", "State Toggles", "Filtering", "Modular CSS"],
+    features: [
+      "Interactive student attendance management system",
+      "Real-time Present/Absent states tracking",
+      "Instant cohort search and status filter",
+      "One-click attendance status toggles"
+    ],
     demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-3-pro-2/",
-    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%203%20project%20-%202"
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%203%20project%20-%202",
+    featured: false,
+    accentColor: "#06b6d4"
   },
   {
     id: "scientific-calculator",
     title: "Interactive Scientific Calculator",
-    category: "Unit 3 • Project 1",
-    icon: "🧮",
-    description: "Responsive mathematical calculator supporting arithmetic evaluations, clear/reset memory buffers, and custom keyboard interaction.",
-    tech: ["React.js", "Math Engine", "Grid Layout", "Key Listeners"],
+    unit: "unit-3",
+    badge: "Unit 3 • Project 1",
+    badgeType: "live",
+    subtitle: "Responsive mathematical calculator with arithmetic evaluations and key listeners.",
+    description:
+      "A responsive mathematical calculator supporting arithmetic evaluations, clear/reset memory buffers, and custom keyboard interaction for students and developers.",
+    technologies: ["React.js", "Math Engine", "Grid Layout", "Key Listeners"],
+    features: [
+      "Arithmetic calculations and instant formula evaluation",
+      "Clear, reset, and memory operations",
+      "Responsive tactile calculator keypad layout",
+      "Keyboard event support for rapid math input"
+    ],
     demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-3-pro-1/",
-    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%203%20project%20-1"
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%203%20project%20-1",
+    featured: false,
+    accentColor: "#f59e0b"
   },
   {
     id: "hobby-showcase",
     title: "Hobby & Passion Showcase",
-    category: "Unit 2 • Project 2",
-    icon: "🎨",
-    description: "Component-driven hobby showcase featuring categorized passion cards, interactive skill highlights, and modern visual cards.",
-    tech: ["React.js", "Component Architecture", "CSS Cards"],
+    unit: "unit-2",
+    badge: "Unit 2 • Project 2",
+    badgeType: "live",
+    subtitle: "Component-driven hobby showcase featuring categorized passion cards.",
+    description:
+      "A component-driven showcase highlighting creative pursuits and technical hobbies with rich card layouts, interactive badges, and responsive multi-device design.",
+    technologies: ["React.js", "Component Architecture", "CSS Cards"],
+    features: [
+      "Categorized interest and hobby profile showcase",
+      "Interactive cards with responsive grid flow",
+      "Clean component separation and custom styling",
+      "Multi-device viewport adaptation"
+    ],
     demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-2-pro-2/",
-    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%202%20project%20-%202"
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%202%20project%20-%202",
+    featured: false,
+    accentColor: "#ec4899"
   },
   {
     id: "developer-profile-card",
     title: "Developer Profile & Skill Card",
-    category: "Unit 2 • Project 1",
-    icon: "💼",
-    description: "Modular personal showcase displaying custom Header, About bio, structured skill pills, career goals, and contact links.",
-    tech: ["React.js", "Props Flow", "Component Composition"],
+    unit: "unit-2",
+    badge: "Unit 2 • Project 1",
+    badgeType: "live",
+    subtitle: "Modular personal showcase with Header, About, structured skill pills, and goals.",
+    description:
+      "A modular personal developer showcase displaying custom Header, About bio, structured skill pills, career goals, and professional contact links.",
+    technologies: ["React.js", "Props Flow", "Component Composition"],
+    features: [
+      "Modular personal developer showcase",
+      "Structured skill pills and expertise metrics",
+      "Career objective and educational background cards",
+      "Direct social and professional contact links"
+    ],
     demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-2-pro-1/",
-    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%202%20Project%20-%201"
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%202%20Project%20-%201",
+    featured: false,
+    accentColor: "#8b5cf6"
   },
   {
     id: "student-grade-card",
     title: "Student Profile Card & Grade Calculator",
-    category: "Unit 1 • Project 2",
-    icon: "🎓",
-    description: "Vanilla HTML & JavaScript dynamic student profile generator that calculates letter grades (A, B, C, F) based on input exam marks.",
-    tech: ["HTML5", "Vanilla JavaScript", "DOM Scripting"],
+    unit: "unit-1",
+    badge: "Unit 1 • Project 2",
+    badgeType: "live",
+    subtitle: "Vanilla HTML & JavaScript dynamic student profile generator with letter grades.",
+    description:
+      "A lightweight, zero-dependency student profile card generator that dynamically computes letter grades (A, B, C, F) based on input exam marks.",
+    technologies: ["HTML5", "Vanilla JavaScript", "DOM Scripting"],
+    features: [
+      "Dynamic student profile card generator",
+      "Automated letter grade calculation (A, B, C, F) based on input marks",
+      "Pure client-side DOM manipulation without external libraries",
+      "Clean responsive card display"
+    ],
     demoUrl: "https://nishanthms760.github.io/Web-Project-/unit%20-%201%20project%20-%202.html",
-    github: "https://github.com/nishanthms760/Web-Project-"
+    github: "https://github.com/nishanthms760/Web-Project-",
+    featured: false,
+    accentColor: "#14b8a6"
   },
   {
     id: "counter-app",
     title: "Interactive Counter App",
-    category: "Unit 1 • Project 1",
-    icon: "⏱️",
-    description: "Fast, responsive web counter with increment (+1), decrement (-1), and reset operations built with pure vanilla HTML and JavaScript.",
-    tech: ["HTML5", "Vanilla JavaScript", "CSS Styling"],
+    unit: "unit-1",
+    badge: "Unit 1 • Project 1",
+    badgeType: "live",
+    subtitle: "Pure vanilla HTML & JavaScript interactive counter with +/- and reset.",
+    description:
+      "Fast, responsive web counter with increment (+1), decrement (-1), and reset operations built with pure vanilla HTML and JavaScript.",
+    technologies: ["HTML5", "Vanilla JavaScript", "CSS Styling"],
+    features: [
+      "Interactive numerical counter with increment (+1) and decrement (-1)",
+      "Instant reset to zero functionality",
+      "Visual feedback and responsive buttons",
+      "Lightweight, zero-dependency pure vanilla implementation"
+    ],
     demoUrl: "https://nishanthms760.github.io/Web-Project-/unit%20-%201%20project%20-%201.html",
-    github: "https://github.com/nishanthms760/Web-Project-"
+    github: "https://github.com/nishanthms760/Web-Project-",
+    featured: false,
+    accentColor: "#f97316"
   }
 ];
 
-export const educationData = [
-  {
-    degree: "Bachelor of Engineering (B.E.) in Computer Science & Engineering",
-    institution: "Prince Dr. K. Vasudevan College of Engineering and Technology (PDKVCET)",
-    location: "Chennai, Tamil Nadu",
-    period: "2025 - 2029 (Expected)",
-    score: "CGPA: 8.6 / 10.0",
-    status: "Currently in 2nd Year",
-    details: [
-      "Consistent academic performance maintaining an 8.6 CGPA across core engineering disciplines.",
-      "Core coursework: Data Structures, Object-Oriented Programming with Java, Database Management Systems, Computer Networks, and Web Technologies.",
-      "Active participant in technical symposiums, hackathons, and software development challenges."
-    ]
-  }
-];
-
-export const certificationsData = [
-  {
-    title: "Introduction to Java",
-    issuer: "Infosys Springboard",
-    badge: "Official Certification",
-    icon: "☕",
-    color: "#f59e0b",
-    skills: ["Java Fundamentals", "Object-Oriented Programming", "Exception Handling", "Collections Framework"],
-    desc: "Comprehensive coursework covering Java programming concepts, syntax, class hierarchies, interfaces, and problem-solving fundamentals."
-  },
-  {
-    title: "Web Development Fundamentals",
-    issuer: "IBM SkillsBuild",
-    badge: "Official Certification",
-    icon: "🌐",
-    color: "#3b82f6",
-    skills: ["HTML5", "CSS3", "JavaScript", "Responsive Web Design", "Client-Side Engineering"],
-    desc: "Rigorous curriculum focused on semantic markup, responsive design principles, web standards, and JavaScript application fundamentals."
-  },
-  {
-    title: "Continuous Programming & Web Engineering",
-    issuer: "Self-Driven & Project-Based Curriculum",
-    badge: "Hands-on Practice",
-    icon: "🚀",
-    color: "#10b981",
-    skills: ["React.js", "RESTful Architecture", "Git & GitHub", "Algorithmic Problem Solving"],
-    desc: "Dedicated self-paced specialization focusing on building full-scale web applications, state management, and modern component architectures."
-  }
-];
-
-export const experienceData = [
-  {
-    role: "Project Developer / Hackathon Finalist",
-    organization: "Smart India Hackathon 2026",
-    period: "2026",
-    type: "National Level Initiative",
-    details: [
-      "Developed Problem Statement 26188: AI-Based Fake Identity & Document Screening System.",
-      "Engineered full pipeline including document upload, OCR extraction, MRZ verification, tamper score modeling, and face biometric comparison.",
-      "Built interactive React client integrated with Python FastAPI backend services and SQLite audit storage."
-    ]
-  },
-  {
-    role: "Full-Stack & Web Developer (Independent Practice)",
-    organization: "Academic & Personal Projects",
-    period: "2025 - Present",
-    type: "Practical Development",
-    details: [
-      "Architected and deployed 10+ live web applications across React and vanilla web engineering units.",
-      "Applied modern software development standards: version control with Git/GitHub, modular component architecture, and responsive design.",
-      "Practiced data structure problem solving and object-oriented programming in Java and Python."
-    ]
-  }
-];
-
-export const achievementsData = [
-  {
-    title: "Smart India Hackathon (SIH 2026) Project Solution",
-    subtitle: "Problem Statement 26188 Solution Developer",
-    icon: "🏆",
-    desc: "Built a complete forensic document authenticity and facial biometric identity screening platform."
-  },
-  {
-    title: "Academic Excellence — 8.6 CGPA",
-    subtitle: "2nd Year B.E. Computer Science",
-    icon: "⭐",
-    desc: "Recognized for strong analytical aptitude and continuous consistency in Computer Science coursework."
-  },
-  {
-    title: "10+ Software & Web Projects Delivered",
-    subtitle: "Hands-On Engineering Track",
-    icon: "💡",
-    desc: "Successfully demonstrated practical web, state-management, and algorithmic problem-solving capabilities across 5 academic engineering units."
-  }
-];
+// Backward compatibility exports
+export const featuredProjects = allProjects.filter(p => p.featured);
+export const miniProjects = allProjects.filter(p => !p.featured);

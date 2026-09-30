@@ -1,70 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { personalInfo } from '../data/portfolioData';
 
-function Navbar({ theme, toggleTheme, onOpenResume }) {
+function Navbar({ theme, toggleTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'education', 'experience', 'contact'];
-      const scrollY = window.scrollY + 120;
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollY >= top && scrollY < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { label: 'About', href: '#about', id: 'about' },
-    { label: 'Skills', href: '#skills', id: 'skills' },
-    { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Education', href: '#education', id: 'education' },
-    { label: 'Experience', href: '#experience', id: 'experience' },
-    { label: 'Contact', href: '#contact', id: 'contact' },
-  ];
 
   return (
     <nav className="navbar">
       <div className="container nav-container">
-        <a href="#home" className="nav-brand">
+        <a href="#projects" className="nav-brand">
           <div className="brand-symbol">N</div>
           <div className="brand-text-wrap">
             <span className="brand-name">
-              Nishanth M S
-              <span className="unit-tag">Unit 4 • Pro 2</span>
+              {personalInfo.name}
+              <span className="unit-tag">Projects Portal</span>
             </span>
-            <span className="brand-sub">CSE • Full-Stack Developer</span>
+            <span className="brand-sub">10 Live Applications &bull; B.E. CSE</span>
           </div>
         </a>
 
-        {/* Desktop Links */}
-        <ul className="nav-links">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <a
-                href={item.href}
-                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Actions */}
+        {/* Desktop Links & Actions */}
         <div className="nav-actions">
+          <a
+            href={personalInfo.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-github"
+            style={{ padding: '0.45rem 1rem', fontSize: '0.85rem' }}
+          >
+            <span>🐙</span> GitHub
+          </a>
+
+          <a
+            href={personalInfo.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-linkedin"
+            style={{ padding: '0.45rem 1rem', fontSize: '0.85rem' }}
+          >
+            <span>💼</span> LinkedIn
+          </a>
+
           <button
             onClick={toggleTheme}
             className="theme-toggle-btn"
@@ -73,43 +48,7 @@ function Navbar({ theme, toggleTheme, onOpenResume }) {
           >
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
-
-          <button onClick={onOpenResume} className="btn-resume">
-            <span>📄</span> Resume
-          </button>
-
-          <button
-            className="mobile-menu-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? '✕' : '☰'}
-          </button>
         </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      <div className={`mobile-nav-drawer ${mobileMenuOpen ? 'open' : ''}`}>
-        {navItems.map((item) => (
-          <a
-            key={item.id}
-            href={item.href}
-            className="mobile-nav-link"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {item.label}
-          </a>
-        ))}
-        <button
-          onClick={() => {
-            setMobileMenuOpen(false);
-            onOpenResume();
-          }}
-          className="btn-resume"
-          style={{ width: 'fit-content', marginTop: '0.5rem' }}
-        >
-          <span>📄</span> Download Resume
-        </button>
       </div>
     </nav>
   );
