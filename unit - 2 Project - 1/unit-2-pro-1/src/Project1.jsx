@@ -21,7 +21,7 @@ function Project() {
   return (
     <div className="container">
       <Header
-        title="Hi, I'm Jai"
+        title="Hi, I'm Nishanth"
         subtitle="Web Developer | React Enthusiast"
       />
 
@@ -41,9 +41,9 @@ function Project() {
         />
 
         <Contact
-          email="jai@example.com"
+          email="nishanthms760@gmail.com"
           phone="+91 98765 43210"
-          github="https://github.com/"
+          github="https://github.com/nishanthms760"
         />
       </main>
 

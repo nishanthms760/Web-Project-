@@ -15,7 +15,7 @@ function Apps() {
     <GreetingCard
       title="Happy Birthday!"
       message="Wishing you a wonderful day filled with happiness and joy."
-      name="Jai"
+      name="Nishanth"
     />
   );
 }

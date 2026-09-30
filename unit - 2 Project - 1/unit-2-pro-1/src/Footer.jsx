@@ -2,7 +2,7 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>© 2026 My Personal Introduction. All rights reserved.</p>
+      <p>© 2026 Nishanth. All rights reserved.</p>
     </footer>
   );
 }
