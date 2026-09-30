@@ -1,4 +1,4 @@
-name: Deploy Portfolio to GitHub Pages
+name: Deploy Projects to GitHub Pages
 
 on:
   push:
@@ -28,25 +28,98 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: 'unit - 4 project - 2/unit-4-pro-2/package-lock.json'
+          node-version: 22
 
-      - name: Install dependencies
-        working-directory: './unit - 4 project - 2/unit-4-pro-2'
-        run: npm ci
+      - name: Build all frontend projects
+        shell: bash
+        run: |
+          set -e
+          mkdir -p _site
 
-      - name: Build project
-        working-directory: './unit - 4 project - 2/unit-4-pro-2'
-        run: npm run build
+          # 1. Build and copy unit-4-pro-2 as primary portfolio site at root
+          echo "Building unit-4-pro-2 (Developer Portfolio)..."
+          cd "unit - 4 project - 2/unit-4-pro-2"
+          npm ci
+          npm run build
+          cd ../..
+          cp -r "unit - 4 project - 2/unit-4-pro-2/dist/"* _site/
+
+          # 2. Build and copy unit-2-pro-1
+          echo "Building unit-2-pro-1..."
+          cd "unit - 2 Project - 1/unit-2-pro-1"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-2-pro-1
+          cp -r "unit - 2 Project - 1/unit-2-pro-1/dist/"* _site/unit-2-pro-1/
+
+          # 3. Build and copy unit-2-pro-2
+          echo "Building unit-2-pro-2..."
+          cd "unit - 2 project - 2/unit-2-pro-2"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-2-pro-2
+          cp -r "unit - 2 project - 2/unit-2-pro-2/dist/"* _site/unit-2-pro-2/
+
+          # 4. Build and copy unit-3-pro-1
+          echo "Building unit-3-pro-1..."
+          cd "unit - 3 project -1/unit-3-pro-1"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-3-pro-1
+          cp -r "unit - 3 project -1/unit-3-pro-1/dist/"* _site/unit-3-pro-1/
+
+          # 5. Build and copy unit-3-pro-2
+          echo "Building unit-3-pro-2..."
+          cd "unit - 3 project - 2/unit-3-pro-2"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-3-pro-2
+          cp -r "unit - 3 project - 2/unit-3-pro-2/dist/"* _site/unit-3-pro-2/
+
+          # 6. Build and copy unit-4-pro-1
+          echo "Building unit-4-pro-1..."
+          cd "unit - 4 project - 1/unit-4-pro-1"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-4-pro-1
+          cp -r "unit - 4 project - 1/unit-4-pro-1/dist/"* _site/unit-4-pro-1/
+
+          # 7. Build and copy unit-5-pro-1
+          echo "Building unit-5-pro-1..."
+          cd "unit - 5 project - 1/unit-5-pro-1"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-5-pro-1
+          cp -r "unit - 5 project - 1/unit-5-pro-1/dist/"* _site/unit-5-pro-1/
+
+          # 8. Build and copy unit-5-pro-2 (Frontend only)
+          echo "Building unit-5-pro-2..."
+          cd "unit - 5 project - 2/unit-5-pro-2"
+          npm ci
+          npm run build
+          cd ../..
+          mkdir -p _site/unit-5-pro-2
+          cp -r "unit - 5 project - 2/unit-5-pro-2/dist/"* _site/unit-5-pro-2/
+
+          # 9. Copy static HTML projects
+          cp "unit - 1 project - 1.html" _site/
+          cp "unit - 1 project - 2.html" _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './unit - 4 project - 2/unit-4-pro-2/dist'
+          path: './_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
