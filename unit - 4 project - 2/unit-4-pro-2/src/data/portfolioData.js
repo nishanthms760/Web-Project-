@@ -22,7 +22,7 @@ export const personalInfo = {
 export const stats = [
   { label: "Current CGPA", value: "8.6", suffix: "/ 10", desc: "Top tier academic record" },
   { label: "Year & Degree", value: "2nd", suffix: "Year B.E.", desc: "Computer Science & Eng." },
-  { label: "Practical Projects", value: "8+", suffix: "Built", desc: "Web, AI & full-stack apps" },
+  { label: "Practical Projects", value: "10+", suffix: "Built", desc: "Live web apps & tools" },
   { label: "Availability", value: "Immediate", suffix: "Intern", desc: "Remote or Chennai onsite" }
 ];
 
@@ -65,6 +65,87 @@ export const skillsData = {
 
 export const featuredProjects = [
   {
+    id: "studyflow",
+    title: "StudyFlow — Student Study Diary & Tracker",
+    badge: "Unit 5 • Project 2 (Live Deployed)",
+    subtitle: "Complete academic productivity suite with Pomodoro timer, diary logs, and matrix calendar.",
+    description:
+      "A feature-rich academic dashboard built with React and Context API. Empowers students to manage deadlines, log daily study diaries, run focused Pomodoro cycles, track weekly horizons, and manage tasks across Kanban and Matrix views.",
+    technologies: [
+      "React.js",
+      "Context API",
+      "CSS3 Glassmorphism",
+      "Local Storage",
+      "Pomodoro Timer",
+      "HashRouter",
+      "Kanban Board"
+    ],
+    features: [
+      "Interactive 7-day academic horizon planner and monthly calendar matrix",
+      "Daily study diary with mood tracking and subject hour analytics",
+      "Pomodoro focus timer with automated audio chimes and cycle counters",
+      "Responsive sidebar navigation with instant dark/light theme switcher",
+      "Full client-side task persistence using local storage"
+    ],
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%205%20project%20-%202",
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-5-pro-2/",
+    featured: true,
+    accentColor: "#6366f1"
+  },
+  {
+    id: "edugrade",
+    title: "EduGrade — Student Report Card & SGPA Portal",
+    badge: "Unit 5 • Project 1 (Live Deployed)",
+    subtitle: "Interactive academic evaluation portal with SGPA calculations and printable grade sheets.",
+    description:
+      "A comprehensive student performance management portal. Features dynamic SGPA and CGPA computation, subject-wise grade distributions, instant search & filter across cohorts, and printable official student report cards.",
+    technologies: [
+      "React.js",
+      "React Router",
+      "State Management",
+      "Vanilla CSS",
+      "SGPA Engine",
+      "Printable Reports"
+    ],
+    features: [
+      "Real-time SGPA calculation based on credit hours and grade points",
+      "Student directory with instant multi-attribute search and filtering",
+      "Individual student modal with subject mark breakdowns and performance metrics",
+      "Printable semester grade reports formatted for official records",
+      "Full responsive layout optimized for mobile and desktop screens"
+    ],
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%205%20project%20-%201",
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-5-pro-1/",
+    featured: true,
+    accentColor: "#0ea5e9"
+  },
+  {
+    id: "verification-portal",
+    title: "Secure User Verification & KYC Portal",
+    badge: "Unit 4 • Project 1 (Live Deployed)",
+    subtitle: "Dynamic multi-field registration form with algorithmic regex checks and cascading selectors.",
+    description:
+      "A production-grade user onboarding and document verification interface. Validates government identity formats (Aadhaar, PAN), verifies phone and email syntaxes, provides cascading state/city selectors, and supports live avatar photo uploads.",
+    technologies: [
+      "React.js",
+      "Regex Validation",
+      "FileReader API",
+      "Dynamic Dropdowns",
+      "Responsive Forms"
+    ],
+    features: [
+      "Live 12-digit Aadhaar and 10-char PAN algorithmic syntax verification",
+      "Cascading state-to-city location dropdowns (Karnataka, Maharashtra, Tamil Nadu)",
+      "Interactive avatar image upload with real-time preview",
+      "Age calculation and 18+ date of birth validation",
+      "Real-time validation error tooltips and submission summary modal"
+    ],
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%204%20project%20-%201",
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-4-pro-1/",
+    featured: true,
+    accentColor: "#10b981"
+  },
+  {
     id: "sih-26188",
     title: "AI-Based Fake Identity & Document Screening System",
     badge: "Smart India Hackathon 2026 • PS 26188",
@@ -80,9 +161,7 @@ export const featuredProjects = [
       "Face Verification",
       "MRZ Validation",
       "Image Analysis",
-      "Risk Scoring",
-      "Docker",
-      "SQLite"
+      "Risk Scoring"
     ],
     features: [
       "Identity document upload with multi-format support",
@@ -91,82 +170,74 @@ export const featuredProjects = [
       "MRZ and date validity verification engine",
       "Document tampering and image artifact analysis",
       "SHA-256 cryptographic document hashing",
-      "Dynamic risk score generation with alert metrics",
-      "Comprehensive audit trail log for screening history"
+      "Dynamic risk score generation with alert metrics"
     ],
     github: "https://github.com/nishanthms760/sih-26188-document-screening",
     featured: true,
-    accentColor: "#6366f1"
-  },
-  {
-    id: "college-website",
-    title: "College Website",
-    badge: "Academic Web Project",
-    subtitle: "Modern, responsive institutional web portal for academic discovery.",
-    description:
-      "A responsive college website developed as a practical web-development project. Features comprehensive information architecture, responsive department catalogs, admissions portal preview, and interactive campus highlights.",
-    technologies: ["HTML5", "CSS3", "JavaScript"],
-    features: [
-      "Responsive layout optimized across desktop, tablet, and mobile screens",
-      "Structured navigation with department directories and syllabus overviews",
-      "Interactive events banner and campus news feed",
-      "Admissions inquiry form with client-side verification",
-      "Lightweight Vanilla CSS animations and accessible UI patterns"
-    ],
-    github: "https://github.com/nishanthms760/college-website",
-    featured: true,
-    accentColor: "#0ea5e9"
+    accentColor: "#a855f7"
   }
 ];
 
 export const miniProjects = [
   {
-    id: "todo-app",
-    title: "Todo Application",
-    category: "React State & Storage",
-    icon: "📋",
-    description: "Task management application featuring local storage persistence, priority tagging, and dynamic filter states (Active, Completed, All).",
-    tech: ["React.js", "LocalStorage", "CSS Modules"]
+    id: "attendance-tracker",
+    title: "Student Attendance & Status Tracker",
+    category: "Unit 3 • Project 2",
+    icon: "📊",
+    description: "Interactive student attendance management system tracking real-time Present/Absent states with cohort filtering and one-click status toggles.",
+    tech: ["React.js", "State Toggles", "Filtering", "Modular CSS"],
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-3-pro-2/",
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%203%20project%20-%202"
   },
   {
-    id: "feedback-wall",
-    title: "Feedback Wall",
-    category: "Interactive Community Board",
-    icon: "💬",
-    description: "Community feedback and sentiment board with real-time feedback submissions, star rating analytics, and sentiment categorization.",
-    tech: ["React.js", "State Lifting", "Transitions"]
+    id: "scientific-calculator",
+    title: "Interactive Scientific Calculator",
+    category: "Unit 3 • Project 1",
+    icon: "🧮",
+    description: "Responsive mathematical calculator supporting arithmetic evaluations, clear/reset memory buffers, and custom keyboard interaction.",
+    tech: ["React.js", "Math Engine", "Grid Layout", "Key Listeners"],
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-3-pro-1/",
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%203%20project%20-1"
   },
   {
-    id: "student-context",
-    title: "Student Context Application",
-    category: "Global State Architecture",
+    id: "hobby-showcase",
+    title: "Hobby & Passion Showcase",
+    category: "Unit 2 • Project 2",
+    icon: "🎨",
+    description: "Component-driven hobby showcase featuring categorized passion cards, interactive skill highlights, and modern visual cards.",
+    tech: ["React.js", "Component Architecture", "CSS Cards"],
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-2-pro-2/",
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%202%20project%20-%202"
+  },
+  {
+    id: "developer-profile-card",
+    title: "Developer Profile & Skill Card",
+    category: "Unit 2 • Project 1",
+    icon: "💼",
+    description: "Modular personal showcase displaying custom Header, About bio, structured skill pills, career goals, and contact links.",
+    tech: ["React.js", "Props Flow", "Component Composition"],
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit-2-pro-1/",
+    github: "https://github.com/nishanthms760/Web-Project-/tree/main/unit%20-%202%20Project%20-%201"
+  },
+  {
+    id: "student-grade-card",
+    title: "Student Profile Card & Grade Calculator",
+    category: "Unit 1 • Project 2",
     icon: "🎓",
-    description: "Demonstration of React Context API for global student record state management without prop drilling across deeply nested views.",
-    tech: ["React Context API", "useReducer", "CRUD"]
+    description: "Vanilla HTML & JavaScript dynamic student profile generator that calculates letter grades (A, B, C, F) based on input exam marks.",
+    tech: ["HTML5", "Vanilla JavaScript", "DOM Scripting"],
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit%20-%201%20project%20-%202.html",
+    github: "https://github.com/nishanthms760/Web-Project-"
   },
   {
-    id: "blood-locator",
-    title: "Community Blood Donation Locator",
-    category: "Civic & Healthcare Tech",
-    icon: "🩸",
-    description: "Emergency blood donor prototype linking hospital requests with registered local donors filtered by blood group and geographic location.",
-    tech: ["React.js", "Geo Filter", "Mock API"]
-  },
-  {
-    id: "api-integration",
-    title: "React API Integration Hub",
-    category: "Asynchronous Networking",
-    icon: "📡",
-    description: "Live data retrieval engine with search debounce, error boundaries, request retry logic, and skeleton loading animations.",
-    tech: ["React.js", "Async/Await", "REST API"]
-  },
-  {
-    id: "fetch-axios",
-    title: "Fetch vs Axios Demonstrator",
-    category: "Network Engineering",
-    icon: "⚡",
-    description: "Comparative architecture sandbox highlighting differences in HTTP clients, request/response interceptors, and timeout handling.",
-    tech: ["Fetch API", "Axios", "Error Handlers"]
+    id: "counter-app",
+    title: "Interactive Counter App",
+    category: "Unit 1 • Project 1",
+    icon: "⏱️",
+    description: "Fast, responsive web counter with increment (+1), decrement (-1), and reset operations built with pure vanilla HTML and JavaScript.",
+    tech: ["HTML5", "Vanilla JavaScript", "CSS Styling"],
+    demoUrl: "https://nishanthms760.github.io/Web-Project-/unit%20-%201%20project%20-%201.html",
+    github: "https://github.com/nishanthms760/Web-Project-"
   }
 ];
 
@@ -234,7 +305,7 @@ export const experienceData = [
     period: "2025 - Present",
     type: "Practical Development",
     details: [
-      "Architected and deployed 8+ web applications including responsive college website and React utility ecosystems.",
+      "Architected and deployed 10+ live web applications across React and vanilla web engineering units.",
       "Applied modern software development standards: version control with Git/GitHub, modular component architecture, and responsive design.",
       "Practiced data structure problem solving and object-oriented programming in Java and Python."
     ]
@@ -255,9 +326,9 @@ export const achievementsData = [
     desc: "Recognized for strong analytical aptitude and continuous consistency in Computer Science coursework."
   },
   {
-    title: "8+ Software & Web Projects Delivered",
+    title: "10+ Software & Web Projects Delivered",
     subtitle: "Hands-On Engineering Track",
     icon: "💡",
-    desc: "Successfully demonstrated practical web, state-management, and algorithmic problem-solving capabilities."
+    desc: "Successfully demonstrated practical web, state-management, and algorithmic problem-solving capabilities across 5 academic engineering units."
   }
 ];
