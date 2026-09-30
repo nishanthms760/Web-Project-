@@ -1,0 +1,418 @@
+export const studentProfile = {
+  name: "Nishanth M S",
+  registerNumber: "311823104052",
+  rollNumber: "23CSE042",
+  degree: "Bachelor of Engineering (B.E.)",
+  branch: "Computer Science & Engineering",
+  department: "Department of Computer Science & Engineering",
+  institution: "Prince Dr. K. Vasudevan College of Engineering and Technology (PDKVCET)",
+  institutionShort: "PDKVCET, Chennai",
+  affiliatedTo: "Anna University, Chennai",
+  regulation: "Regulation 2021 (CBCS)",
+  admissionYear: "2023",
+  expectedGraduation: "2027",
+  currentYear: "2nd Year",
+  currentSemester: "Semester 3 Completed",
+  dateOfBirth: "15-08-2005",
+  academicStanding: "Good Standing (All Clear)",
+  attendanceOverall: "94.5%",
+  overallCgpa: 8.60,
+  totalCreditsEarned: 66,
+  totalCreditsOffered: 66,
+  rankInClass: "Top 5%",
+};
+
+export const gradeScale = {
+  "O": { points: 10, label: "Outstanding", minMark: 90, color: "#10b981" },
+  "A+": { points: 9, label: "Excellent", minMark: 80, color: "#06b6d4" },
+  "A": { points: 8, label: "Very Good", minMark: 70, color: "#3b82f6" },
+  "B+": { points: 7, label: "Good", minMark: 60, color: "#f59e0b" },
+  "B": { points: 6, label: "Above Average", minMark: 50, color: "#a855f7" },
+  "C": { points: 5, label: "Average", minMark: 45, color: "#64748b" },
+  "U": { points: 0, label: "Re-appear", minMark: 0, color: "#ef4444" }
+};
+
+export const semesterResults = [
+  {
+    semNumber: 1,
+    title: "Semester I (Winter 2023)",
+    session: "Nov / Dec 2023",
+    sgpa: 8.52,
+    totalCredits: 23,
+    creditsEarned: 23,
+    resultStatus: "PASS - ALL CLEAR",
+    courses: [
+      {
+        code: "HS3152",
+        name: "Professional English - I",
+        type: "Theory",
+        category: "HSMC",
+        credits: 3,
+        internal: 18,
+        external: 72,
+        total: 90,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "MA3151",
+        name: "Matrices and Calculus",
+        type: "Theory",
+        category: "BSC",
+        credits: 4,
+        internal: 17,
+        external: 66,
+        total: 83,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "PH3151",
+        name: "Engineering Physics",
+        type: "Theory",
+        category: "BSC",
+        credits: 3,
+        internal: 16,
+        external: 65,
+        total: 81,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "CY3151",
+        name: "Engineering Chemistry",
+        type: "Theory",
+        category: "BSC",
+        credits: 3,
+        internal: 15,
+        external: 62,
+        total: 77,
+        grade: "A",
+        gradePoint: 8,
+        status: "PASS"
+      },
+      {
+        code: "GE3151",
+        name: "Problem Solving and Python Programming",
+        type: "Theory",
+        category: "ESC",
+        credits: 3,
+        internal: 19,
+        external: 73,
+        total: 92,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "GE3152",
+        name: "Heritage of Tamils",
+        type: "Theory",
+        category: "HSMC",
+        credits: 1,
+        internal: 18,
+        external: 70,
+        total: 88,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "GE3171",
+        name: "Problem Solving & Python Lab",
+        type: "Practical",
+        category: "ESC",
+        credits: 2,
+        internal: 19,
+        external: 75,
+        total: 94,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "BS3171",
+        name: "Physics and Chemistry Laboratory",
+        type: "Practical",
+        category: "BSC",
+        credits: 2,
+        internal: 18,
+        external: 74,
+        total: 92,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "GE3172",
+        name: "English Laboratory",
+        type: "Practical",
+        category: "HSMC",
+        credits: 2,
+        internal: 18,
+        external: 71,
+        total: 89,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      }
+    ]
+  },
+  {
+    semNumber: 2,
+    title: "Semester II (Spring 2024)",
+    session: "Apr / May 2024",
+    sgpa: 8.61,
+    totalCredits: 22,
+    creditsEarned: 22,
+    resultStatus: "PASS - ALL CLEAR",
+    courses: [
+      {
+        code: "HS3252",
+        name: "Professional English - II",
+        type: "Theory",
+        category: "HSMC",
+        credits: 2,
+        internal: 17,
+        external: 68,
+        total: 85,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "MA3251",
+        name: "Statistics and Numerical Methods",
+        type: "Theory",
+        category: "BSC",
+        credits: 4,
+        internal: 16,
+        external: 66,
+        total: 82,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "PH3256",
+        name: "Physics for Information Science",
+        type: "Theory",
+        category: "BSC",
+        credits: 3,
+        internal: 16,
+        external: 63,
+        total: 79,
+        grade: "A",
+        gradePoint: 8,
+        status: "PASS"
+      },
+      {
+        code: "BE3251",
+        name: "Basic Electrical and Electronics Engineering",
+        type: "Theory",
+        category: "ESC",
+        credits: 3,
+        internal: 15,
+        external: 64,
+        total: 79,
+        grade: "A",
+        gradePoint: 8,
+        status: "PASS"
+      },
+      {
+        code: "GE3251",
+        name: "Engineering Graphics",
+        type: "Theory",
+        category: "ESC",
+        credits: 4,
+        internal: 18,
+        external: 70,
+        total: 88,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "CS3251",
+        name: "Programming in C",
+        type: "Theory",
+        category: "PCC",
+        credits: 3,
+        internal: 19,
+        external: 73,
+        total: 92,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "GE3252",
+        name: "Tamils and Technology",
+        type: "Theory",
+        category: "HSMC",
+        credits: 1,
+        internal: 18,
+        external: 72,
+        total: 90,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "CS3271",
+        name: "Programming in C Laboratory",
+        type: "Practical",
+        category: "PCC",
+        credits: 2,
+        internal: 19,
+        external: 76,
+        total: 95,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      }
+    ]
+  },
+  {
+    semNumber: 3,
+    title: "Semester III (Winter 2024)",
+    session: "Nov / Dec 2024",
+    sgpa: 8.68,
+    totalCredits: 21,
+    creditsEarned: 21,
+    resultStatus: "PASS - ALL CLEAR",
+    courses: [
+      {
+        code: "MA3354",
+        name: "Discrete Mathematics",
+        type: "Theory",
+        category: "BSC",
+        credits: 4,
+        internal: 17,
+        external: 67,
+        total: 84,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "CS3351",
+        name: "Digital Principles and Computer Organization",
+        type: "Theory",
+        category: "ESC",
+        credits: 4,
+        internal: 16,
+        external: 65,
+        total: 81,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "CS3352",
+        name: "Foundations of Data Science",
+        type: "Theory",
+        category: "PCC",
+        credits: 3,
+        internal: 17,
+        external: 70,
+        total: 87,
+        grade: "A+",
+        gradePoint: 9,
+        status: "PASS"
+      },
+      {
+        code: "CS3301",
+        name: "Data Structures",
+        type: "Theory",
+        category: "PCC",
+        credits: 3,
+        internal: 19,
+        external: 73,
+        total: 92,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "CS3391",
+        name: "Object Oriented Programming (Java)",
+        type: "Theory",
+        category: "PCC",
+        credits: 3,
+        internal: 19,
+        external: 74,
+        total: 93,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "CS3311",
+        name: "Data Structures Laboratory",
+        type: "Practical",
+        category: "PCC",
+        credits: 1.5,
+        internal: 20,
+        external: 76,
+        total: 96,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "CS3381",
+        name: "Object Oriented Programming Laboratory",
+        type: "Practical",
+        category: "PCC",
+        credits: 1.5,
+        internal: 19,
+        external: 76,
+        total: 95,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      },
+      {
+        code: "GE3361",
+        name: "Professional Development",
+        type: "Practical",
+        category: "EEC",
+        credits: 1,
+        internal: 18,
+        external: 74,
+        total: 92,
+        grade: "O",
+        gradePoint: 10,
+        status: "PASS"
+      }
+    ]
+  }
+];
+
+export const semesterSummaries = [
+  {
+    sem: "Semester 1",
+    sgpa: 8.52,
+    credits: 23,
+    status: "Pass",
+    topCourse: "Problem Solving & Python Programming (O)"
+  },
+  {
+    sem: "Semester 2",
+    sgpa: 8.61,
+    credits: 22,
+    status: "Pass",
+    topCourse: "Programming in C Laboratory (O)"
+  },
+  {
+    sem: "Semester 3",
+    sgpa: 8.68,
+    credits: 21,
+    status: "Pass",
+    topCourse: "Object Oriented Programming (Java) (O)"
+  }
+];

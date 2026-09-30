@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyFlow - Unit 5 Project 2 Lab Report</title>
+  <style>
+    /* Print & Screen Layout */
+    @page {
+      size: A4 portrait;
+      margin: 18mm 20mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, Georgia, serif;
+      font-size: 11.5pt;
+      line-height: 1.45;
+      color: #111;
+      background: #f0f2f5;
+    }
+
+    /* Print toolbar at top */
+    .no-print-bar {
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .no-print-bar h3 {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .no-print-bar p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .btn-print {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-print:hover {
+      background: #2563eb;
+    }
+
+    .page-container {
+      max-width: 210mm;
+      margin: 24px auto;
+      padding: 0;
+    }
+
+    /* Standard A4 Page sheet */
+    .sheet {
+      background: #ffffff;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 24mm 22mm;
+      margin: 0 auto 28px auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .page-container {
+        margin: 0;
+        max-width: 100%;
+      }
+      .sheet {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        min-height: auto;
+        height: auto;
+      }
+      .sheet:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+    }
+
+    /* Student Meta Header */
+    .meta-header {
+      margin-bottom: 22px;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+
+    .meta-header p {
+      margin-bottom: 3px;
+    }
+
+    .meta-header strong {
+      font-weight: bold;
+    }
+
+    .meta-header .italic-val {
+      font-style: italic;
+    }
+
+    /* Main Project Title */
+    .project-title {
+      text-align: center;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 13.5pt;
+      letter-spacing: 0.5px;
+      margin: 22px 0 20px 0;
+      text-transform: uppercase;
+    }
+
+    /* Headings */
+    h2.sec-heading {
+      font-size: 12pt;
+      font-weight: bold;
+      margin: 14px 0 8px 0;
+    }
+
+    h3.step-heading {
+      font-size: 11.5pt;
+      font-weight: bold;
+      margin: 14px 0 6px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    ul {
+      margin: 6px 0 12px 28px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    /* Code layout */
+    .code-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 8.2pt;
+      line-height: 1.32;
+    }
+
+    .code-title {
+      font-family: "Times New Roman", Times, serif;
+      font-weight: bold;
+      font-size: 11pt;
+      margin: 8px 0 4px 0;
+    }
+
+    .code-block {
+      background: #fafafa;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 8px 10px;
+      white-space: pre;
+      overflow: hidden;
+      font-family: "Consolas", "Courier New", monospace;
+      color: #0f172a;
+    }
+
+    /* Screenshot mockups */
+    .screenshots-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0 16px 0;
+    }
+
+    .mockup-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .mockup-bar {
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .mockup-title {
+      font-family: system-ui, sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      color: #64748b;
+      margin-left: 6px;
+    }
+
+    .mockup-content {
+      padding: 10px 14px;
+      font-family: system-ui, sans-serif;
+      font-size: 10px;
+      background: #f8fafc;
+    }
+
+    .mockup-stats-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .stat-pill {
+      flex: 1;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-pill strong {
+      font-size: 13px;
+      color: #1e293b;
+    }
+
+    .stat-pill span {
+      font-size: 8.5px;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .mockup-list {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mockup-item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mockup-item .badge {
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .badge-high { background: #fee2e2; color: #dc2626; }
+    .badge-done { background: #dcfce7; color: #15803d; }
+    .badge-prog { background: #e0f2fe; color: #0284c7; }
+
+    .two-col-mockups {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar for Printing -->
+  <div class="no-print-bar">
+    <div>
+      <h3>StudyFlow - Lab Project Report (Unit 5 Project 2)</h3>
+      <p>Formatted to match your model PDF. Click the button to export as PDF.</p>
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ Print / Save as PDF
+    </button>
+  </div>
+
+  <div class="page-container">
+
+    <!-- ================= PAGE 1 ================= -->
+    <section class="sheet">
+      <div class="meta-header">
+        <p><strong>Name:</strong> <span class="italic-val">Nishanth M S</span></p>
+        <p><strong>Department:</strong> <span class="italic-val">B.E. Computer Science and Engineering</span></p>
+        <p><strong>Batch:</strong> <span class="italic-val">03</span></p>
+        <p><strong>Subject:</strong> <span class="italic-val">Web Interface</span></p>
+      </div>
+
+      <div class="project-title">
+        STUDENT DAILY DIARY &amp; TASK PLANNER USING REACT
+      </div>
+
+      <h2 class="sec-heading">Aim</h2>
+      <p>
+        To develop a comprehensive Student Daily Diary and Task Planner website using React that enables students to organize academic tasks, schedule routines across 5 structured time-slots (Morning, College/School, Afternoon, Evening, and Night), write persistent diary reflections, and track weekly productivity metrics through a multi-page interface powered by React Router.
+      </p>
+
+      <h2 class="sec-heading">Procedure</h2>
+
+      <h3 class="step-heading">Step 1: Creating the React Application</h3>
+      <p>
+        A React application is initialized using Vite for high-performance development and bundling. The project structure is cleanly organized into reusable components, dedicated pages, global context providers, API communication services, and modular CSS style sheets to make the system scalable, testable, and maintainable.
+      </p>
+      <p>The application contains separate sections for:</p>
+      <ul>
+        <li>Dashboard &amp; Overview Analytics</li>
+        <li>Daily Diary &amp; Time-Slot Management</li>
+        <li>All Tasks &amp; Multi-Criteria Filter</li>
+        <li>Weekly Planning Schedule</li>
+        <li>Academic Calendar</li>
+        <li>Completed Tasks Archive</li>
+        <li>Student Profile &amp; Study Stats</li>
+      </ul>
+
+      <h3 class="step-heading">Step 2: Creating the Application Layout</h3>
+      <p>
+        The main App.jsx file is configured to establish the global layout structure, housing navigation components and route definitions.
+      </p>
+      <p>The application layout contains:</p>
+      <ul>
+        <li>Collapsible Responsive Sidebar Navigation</li>
+        <li>Top Navigation Bar with Quick Task Creation</li>
+        <li>Global Add/Edit Task Modal Dialog</li>
+        <li>Context State Wrappers (Theme, Auth, and Task Providers)</li>
+        <li>Dynamic Route Switcher for Protected Content</li>
+      </ul>
+      <p>
+        The navigation system allows the student to transition smoothly between daily scheduling, long-term calendar views, and performance tracking.
+      </p>
+
+      <h3 class="step-heading">Step 3: Creating the Student Profile</h3>
+      <p>
+        A dedicated Profile page is implemented to maintain the student's personal identity, academic milestones, and productivity streaks.
+      </p>
+    </section>
+
+
+    <!-- ================= PAGE 2 ================= -->
+    <section class="sheet">
+      <p>
+        A reusable profile card and account management form display the student's vital information and study statistics.
+      </p>
+      <p>The profile includes:</p>
+      <ul>
+        <li>Student Name &amp; Academic Email</li>
+        <li>Degree and Department (B.E. CSE)</li>
+        <li>Profile Avatar</li>
+        <li>Active 5-Day Study Streak Badge</li>
+        <li>Cumulative Task Count &amp; Completed Total</li>
+        <li>Weekly Productivity Index (Completion Rate %)</li>
+        <li>Account Information &amp; Password Update Form</li>
+      </ul>
+      <p>
+        The profile section establishes user identity and motivates consistent daily study habits through progress streaks.
+      </p>
+
+      <h3 class="step-heading">Step 4: Implementing React Router</h3>
+      <p>
+        HashRouter, Routes, Route, Navigate, and NavLink from react-router-dom are configured for client-side routing and protected navigation.
+      </p>
+      <p>The application contains the following primary routes:</p>
+      <ul>
+        <li>/ – Dashboard Overview &amp; Task Analytics</li>
+        <li>/diary – Daily Diary Journal with 5 Time Slots</li>
+        <li>/weekly – 7-Day Planning Schedule Grid</li>
+        <li>/tasks – All Tasks with Search and Filter Chips</li>
+        <li>/completed – Completed Tasks Archive</li>
+        <li>/calendar – Academic Calendar View</li>
+        <li>/profile – Student Profile &amp; Streak Metrics</li>
+        <li>/settings – User Preferences &amp; Theme Controls</li>
+        <li>/login, /register, /forgot-password – Authentication Views</li>
+      </ul>
+      <p>
+        This modular routing architecture renders each functional study module as an independent view while preserving persistent navigation.
+      </p>
+
+      <h3 class="step-heading">Step 5: Creating the Daily Diary System</h3>
+      <p>
+        The DailyDiary and DiarySection components create an authentic journal interface organized by date and daily segments.
+      </p>
+      <p>The diary system includes:</p>
+      <ul>
+        <li>Interactive Date Navigation (Previous Day, Live Date Header, Next Day)</li>
+        <li>Morning Routine Slot (06:00 AM – 11:59 AM)</li>
+        <li>School / College Lectures &amp; Practical Labs Slot</li>
+        <li>Afternoon Study &amp; Assignments Slot (12:00 PM – 04:59 PM)</li>
+        <li>Evening Projects &amp; Homework Slot (05:00 PM – 08:59 PM)</li>
+        <li>Night Revision &amp; Reflection Slot (09:00 PM – 11:59 PM)</li>
+        <li>Permanent Database Journal Notes with Character Counter and Auto-Persistence</li>
+      </ul>
+    </section>
+
+
+    <!-- ================= PAGE 3 ================= -->
+    <section class="sheet">
+      <p>
+        A reusable TaskCard component displays individual tasks with time stamps, subjects, priority chips, and status toggles inside their respective time buckets.
+      </p>
+
+      <h3 class="step-heading">Step 6: Creating Task Management and Filtering</h3>
+      <p>
+        The AllTasks page provides end-to-end task lifecycle management (Create, Read, Update, Delete) with rapid filtering capabilities.
+      </p>
+      <p>The task management system includes:</p>
+      <ul>
+        <li>Real-time search across task titles, subject courses, and descriptions</li>
+        <li>Filter chips: All, Pending, In Progress, Completed, High Priority, Today, This Week, Overdue</li>
+        <li>Priority tagging with color hierarchy (High: Red, Medium: Yellow, Low: Blue)</li>
+        <li>Inline status toggling to instantly mark tasks complete</li>
+        <li>Modal dialog for detailed task creation with dates, timings, subjects, and types</li>
+      </ul>
+
+      <h3 class="step-heading">Step 7: Storing and Synchronizing Data</h3>
+      <p>
+        A centralized TaskContext provider and API service layer (taskService.js, diaryService.js) manage global state synchronization.
+      </p>
+      <p>The data layer handles:</p>
+      <ul>
+        <li>Full CRUD synchronization with Express REST backend</li>
+        <li>Automatic fallback to browser LocalStorage for offline continuity</li>
+        <li>Real-time notification toast system for operation feedback</li>
+        <li>Dynamic calculation of weekly completion percentages and overdue tallies</li>
+      </ul>
+
+      <h3 class="step-heading">Step 8: Creating Weekly and Calendar Views</h3>
+      <p>
+        Separate perspective views help students organize workload across broader time horizons:
+      </p>
+      <ul>
+        <li>WeeklyView: Renders a 7-day horizontal grid dividing tasks by weekday.</li>
+        <li>CalendarPage: Displays a monthly calendar grid highlighting active deadlines and exam milestones.</li>
+      </ul>
+
+      <h3 class="step-heading">Step 9: Creating Dashboard Analytics</h3>
+      <p>
+        The Dashboard provides an immediate executive summary of academic commitments:
+      </p>
+      <ul>
+        <li>Metric summary cards: Total Tasks, Due Today, In Progress, and Completed</li>
+        <li>Visual completion progress bar and weekly rate indicator</li>
+        <li>Quick-action shortcuts to add tasks or jump directly to today's diary</li>
+      </ul>
+    </section>
+
+
+    <!-- ================= PAGE 4 ================= -->
+    <section class="sheet">
+      <h2 class="sec-heading">React Concepts Used</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 14px;">
+        <ul>
+          <li>Functional Components</li>
+          <li>JSX (JavaScript XML)</li>
+          <li>Component-Based Architecture</li>
+          <li>React Router (HashRouter)</li>
+          <li>Routes &amp; Route</li>
+          <li>NavLink &amp; Navigate</li>
+          <li>useLocation &amp; useSearchParams</li>
+          <li>Reusable Components</li>
+          <li>Props Passing &amp; Callback Events</li>
+        </ul>
+        <ul>
+          <li>useState (Local State Management)</li>
+          <li>useEffect (Data Lifecycle &amp; Persistence)</li>
+          <li>useMemo (Performance Filtering)</li>
+          <li>useContext (Global Context API)</li>
+          <li>Conditional Rendering</li>
+          <li>JavaScript Array Methods (filter, map)</li>
+          <li>REST API Integration (Express/Node)</li>
+          <li>LocalStorage Caching</li>
+          <li>Responsive CSS Layouts</li>
+        </ul>
+      </div>
+
+      <h2 class="sec-heading">Code</h2>
+
+      <div class="code-title">App.jsx</div>
+      <div class="code-grid">
+        <div class="code-block">import { useState } from 'react';
+import { HashRouter, Routes,
+  Route, Navigate } from 'react-router-dom';
+import { TaskProvider } from
+  './context/TaskContext';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import Dashboard from './pages/Dashboard';
+import DailyDiary from './pages/DailyDiary';
+import AllTasks from './pages/AllTasks';
+import WeeklyView from './pages/WeeklyView';
+import CalendarPage from './pages/CalendarPage';
+import Profile from './pages/Profile';
+
+function App() {
+  return (
+    &lt;TaskProvider&gt;
+      &lt;HashRouter&gt;
+        &lt;div className="app-layout"&gt;
+          &lt;Sidebar /&gt;
+          &lt;div className="main-wrapper"&gt;
+            &lt;Navbar /&gt;
+            &lt;Routes&gt;
+              &lt;Route path="/" element={&lt;Dashboard /&gt;} /&gt;
+              &lt;Route path="/diary" element={&lt;DailyDiary /&gt;} /&gt;
+              &lt;Route path="/tasks" element={&lt;AllTasks /&gt;} /&gt;
+              &lt;Route path="/weekly" element={&lt;WeeklyView /&gt;} /&gt;
+              &lt;Route path="/calendar" element={&lt;CalendarPage /&gt;} /&gt;
+              &lt;Route path="/profile" element={&lt;Profile /&gt;} /&gt;
+            &lt;/Routes&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/HashRouter&gt;
+    &lt;/TaskProvider&gt;
+  );
+}
+export default App;</div>
+
+        <div class="code-block">// AllTasks Filter Computation (AllTasks.jsx)
+const filteredTasks = useMemo(() =&gt; {
+  return tasks.filter(task =&gt; {
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q ||
+      task.title.toLowerCase().includes(q) ||
+      (task.subject &amp;&amp;
+       task.subject.toLowerCase().includes(q));
+
+    if (!matchesSearch) return false;
+
+    if (filterType === 'All') return true;
+    if (filterType === 'Pending')
+      return task.status === 'Pending';
+    if (filterType === 'In Progress')
+      return task.status === 'In Progress';
+    if (filterType === 'Completed')
+      return task.status === 'Completed';
+    if (filterType === 'High Priority')
+      return task.priority === 'High';
+    if (filterType === 'Today')
+      return task.date === currentDate;
+    if (filterType === 'Overdue')
+      return task.date &lt; currentDate &amp;&amp;
+             task.status !== 'Completed';
+
+    return true;
+  });
+}, [tasks, searchQuery, filterType, currentDate]);</div>
+      </div>
+    </section>
+
+
+    <!-- ================= PAGE 5 ================= -->
+    <section class="sheet">
+      <div class="code-title">DiarySection.jsx &amp; TaskContext.jsx</div>
+      <div class="code-grid">
+        <div class="code-block">// 5 Time Slot Buckets (DiarySection.jsx)
+const timeBuckets = useMemo(() =&gt; {
+  const buckets = {
+    morning: [],
+    college: [],
+    afternoon: [],
+    evening: [],
+    night: []
+  };
+
+  dateTasks.forEach(task =&gt; {
+    const type = (task.type || '').toLowerCase();
+    const time = task.start_time || '10:00';
+    const hour = parseInt(time.split(':')[0], 10);
+
+    if (type === 'college' || type === 'school') {
+      buckets.college.push(task);
+    } else if (hour &lt; 12) {
+      buckets.morning.push(task);
+    } else if (hour &gt;= 12 &amp;&amp; hour &lt; 17) {
+      buckets.afternoon.push(task);
+    } else if (hour &gt;= 17 &amp;&amp; hour &lt; 21) {
+      buckets.evening.push(task);
+    } else {
+      buckets.night.push(task);
+    }
+  });
+
+  return buckets;
+}, [dateTasks]);
+
+// Journal Persistence to Backend
+const handleSaveDiaryNotes = async () =&gt; {
+  setIsSavingNotes(true);
+  try {
+    await diaryService.saveDiary(diaryDate, notes);
+    localStorage.setItem(
+      `studyflow_diary_${diaryDate}`, notes
+    );
+  } finally {
+    setIsSavingNotes(false);
+  }
+};</div>
+
+        <div class="code-block">// Centralized Context State (TaskContext.jsx)
+export function TaskProvider({ children }) {
+  const [tasks, setTasks] = useState([]);
+  const [currentDate, setCurrentDate] = useState('2026-09-29');
+
+  const loadTasks = async () =&gt; {
+    try {
+      const data = await taskService.getTasks();
+      setTasks(data);
+    } catch (err) {
+      console.warn('Using local fallback:', err);
+    }
+  };
+
+  useEffect(() =&gt; {
+    loadTasks();
+  }, []);
+
+  const toggleTaskStatus = async (id) =&gt; {
+    const target = tasks.find(t =&gt; t.id === id);
+    const nextStatus =
+      target.status === 'Completed' ? 'Pending' :
+      target.status === 'Pending' ? 'In Progress' :
+      'Completed';
+
+    setTasks(prev =&gt; prev.map(t =&gt;
+      t.id === id ? { ...t, status: nextStatus } : t
+    ));
+    await taskService.updateTask(id, { status: nextStatus });
+  };
+
+  return (
+    &lt;TaskContext.Provider value={{
+      tasks, currentDate, toggleTaskStatus
+    }}&gt;
+      {children}
+    &lt;/TaskContext.Provider&gt;
+  );
+}</div>
+      </div>
+
+      <div style="margin-top: 26px;">
+        <h2 class="sec-heading">Output</h2>
+        <p>
+          The application generates a modern, clean student workspace equipped with real-time diary organization, multi-category assignment tracking, and productivity dashboards as depicted below.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- ================= PAGE 6 ================= -->
+    <section class="sheet">
+      <div class="screenshots-container">
+        <!-- Mockup 1: Dashboard & Productivity -->
+        <div class="mockup-card">
+          <div class="mockup-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="mockup-title">StudyFlow - Dashboard &amp; Productivity Overview (http://localhost:5176/#/)</span>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-stats-row">
+              <div class="stat-pill">
+                <strong>12 Tasks</strong>
+                <span>Total Assignments</span>
+              </div>
+              <div class="stat-pill">
+                <strong>4 Pending</strong>
+                <span>Action Needed</span>
+              </div>
+              <div class="stat-pill">
+                <strong>8 Completed</strong>
+                <span>66.7% Finished</span>
+              </div>
+              <div class="stat-pill">
+                <strong>5-Day Streak</strong>
+                <span>Study Habit 🔥</span>
+              </div>
+            </div>
+            <div class="mockup-list">
+              <div class="mockup-item">
+                <div><strong>Computer Networks Lab</strong> &bull; <span style="color:#64748b;">Subnetting &amp; Cisco Packet Tracer</span></div>
+                <span class="badge badge-high">High Priority</span>
+              </div>
+              <div class="mockup-item">
+                <div><strong>Web Interface Project 2</strong> &bull; <span style="color:#64748b;">React Daily Diary &amp; Planner</span></div>
+                <span class="badge badge-prog">In Progress</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col-mockups">
+          <!-- Mockup 2: Daily Diary -->
+          <div class="mockup-card">
+            <div class="mockup-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="mockup-title">Daily Diary Journal &amp; 5 Time Slots</span>
+            </div>
+            <div class="mockup-content">
+              <div style="font-weight: bold; margin-bottom: 6px; color:#1e293b;">Tuesday, September 29, 2026</div>
+              <div class="mockup-list">
+                <div class="mockup-item">
+                  <span>🌅 Morning: Algorithm Revision</span>
+                  <span class="badge badge-done">Done</span>
+                </div>
+                <div class="mockup-item">
+                  <span>🏛️ College: Database Systems Lecture</span>
+                  <span class="badge badge-prog">In Progress</span>
+                </div>
+                <div class="mockup-item">
+                  <span>☀️ Afternoon: React Component Design</span>
+                  <span class="badge badge-done">Done</span>
+                </div>
+                <div class="mockup-item">
+                  <span>✍️ Diary Notes: Saved to Database</span>
+                  <span class="badge badge-done">Synced</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup 3: Student Profile & Stats -->
+          <div class="mockup-card">
+            <div class="mockup-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="mockup-title">Student Profile &amp; Academic Record</span>
+            </div>
+            <div class="mockup-content">
+              <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 6px;">
+                <div style="width: 26px; height: 26px; border-radius: 50%; background: #3b82f6; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">N</div>
+                <div>
+                  <div style="font-weight: bold; color: #1e293b;">Nishanth M S</div>
+                  <div style="color: #64748b; font-size: 8px;">B.E. CSE &bull; 2nd Year &bull; Batch 03</div>
+                </div>
+              </div>
+              <div class="mockup-list">
+                <div class="mockup-item">
+                  <span>Weekly Productivity Rate</span>
+                  <strong>85%</strong>
+                </div>
+                <div class="mockup-item">
+                  <span>Active Habit Streak</span>
+                  <strong>5 Days 🔥</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="sec-heading">Result</h2>
+      <p>
+        The application demonstrates component-based development, reusable UI components, React Router client-side navigation, centralized state management with React Context, full CRUD task workflows, 5-slot daily diary organization, persistent journal storage, and responsive CSS design. It provides a professional and comprehensive way for students to organize academic tasks, track daily routines, and monitor study progress through a web interface.
+      </p>
+    </section>
+
+  </div>
+
+</body>
+</html>

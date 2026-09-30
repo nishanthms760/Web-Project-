@@ -1,0 +1,134 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .dashboard-summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .weekly-grid-seven {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .diary-content-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .diary-notes-card {
+    position: static;
+  }
+
+  .profile-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-options-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content-wrapper {
+    margin-left: 0;
+  }
+
+  .mobile-hamburger-btn {
+    display: block;
+  }
+
+  .study-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .study-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobile-close-sidebar {
+    display: block;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 90;
+    backdrop-filter: blur(2px);
+  }
+
+  .page-container {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .study-navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-date-sub {
+    display: none;
+  }
+
+  .dashboard-welcome-banner {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-quick-add-large {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dashboard-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .progress-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .task-card-right {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .form-grid-two, .form-grid-three {
+    grid-template-columns: 1fr;
+  }
+
+  .completed-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-grid-seven {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-cell {
+    min-height: 60px;
+    padding: 0.25rem;
+  }
+
+  .cell-count-pill {
+    display: none;
+  }
+
+  .celebration-banner-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
